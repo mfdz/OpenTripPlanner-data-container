@@ -155,6 +155,7 @@ const constants = {
 
 module.exports = {
   ALL_CONFIGS: () => ALL_CONFIGS,
+  layerBbox: process.env.BBOX,
   configMap,
   osm,
   osmMap: osm.reduce((acc, val) => { acc[val.id] = val; return acc }, {}),
