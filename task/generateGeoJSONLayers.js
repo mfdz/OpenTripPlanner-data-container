@@ -25,7 +25,7 @@ module.exports = function (config) {
                 resolve()
             } else {
                 const e = lastLog.join('')
-                //reject(e)
+                reject(e)
                 process.stdout.write(`GeoJson layer generation FAILED (${c})\n${e}\n`)
             }
         })
