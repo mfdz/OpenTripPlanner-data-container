@@ -3,7 +3,7 @@
 set +e
 apt-get update && \
   apt-get -y install \
-    git build-essential python-dev protobuf-compiler libprotobuf-dev \
+    git build-essential python3 python3-pip python-dev protobuf-compiler libprotobuf-dev \
     make swig g++ python-dev libreadosm-dev \
     libboost-graph-dev libproj-dev libgoogle-perftools-dev \
     osmctools unzip zip python-pyproj wget python-argh \
@@ -40,3 +40,4 @@ git clone https://github.com/HSLdevcom/OTPQA.git
 
 # Add GeoJson layers data.
 git clone https://github.com/mfdz/digitransit-overpass-layers.git
+pip3 install -r digitransit-overpass-layers/requirements.txt
