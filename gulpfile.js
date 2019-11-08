@@ -14,6 +14,14 @@ const config = require('./config')
 const { buildOTPGraphTask } = require('./task/buildOTPGraph')
 const hslHackTask = require('./task/hslHackTask')
 const { postSlackMessage } = require('./util')
+const generateGeoJsonLayersTask = require('./task/generateGeoJSONLayers')
+
+/**
+ * Generate GeoJson layers
+ */
+gulp.task('genLayers', function () {
+  return generateGeoJsonLayersTask(config.ALL_CONFIGS())
+})
 
 /**
  * Download and test new osm data
