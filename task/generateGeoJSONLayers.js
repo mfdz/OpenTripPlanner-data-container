@@ -1,5 +1,5 @@
 const fs = require('fs');
-const { hostDataDir, dataToolImage, layerBbox } = require('../config.js');
+const { hostDataDir, dataDir, dataToolImage, layerBbox } = require('../config.js');
 const { exec } = require('child_process')
 
 module.exports = function (config) {
@@ -15,7 +15,7 @@ module.exports = function (config) {
 
         const cmd = `set +e
                     ENV_ICONSRC=\"digitransit-overpass-layers/layer-icons/\" ENV_BBOX=${layerBbox} ENV_DDIR="./layers/" python3 digitransit-overpass-layers/generate-hb-layers.py`
-        const fullCommand = `docker pull ${dataToolImage}; docker run --rm -v ${hostDataDir}:/layers ${dataToolImage} bash -c "${cmd}"`
+        const fullCommand = `docker pull ${dataToolImage}; docker run --rm -v ${dataDir}/layers:/layers ${dataToolImage} bash -c "${cmd}"`
         const genLayers = exec(fullCommand);
         //const genLog = fs.openSync(`${dataDir}/build/${config.id}/layerGeneration.log`, 'w'); // No such file Error.
 
