@@ -14,8 +14,9 @@ module.exports = function (config) {
         // TODO for all routers
 
         const cmd = `set +e
+                    mkdir layers
                     ENV_ICONSRC=\"digitransit-overpass-layers/layer-icons/\" ENV_BBOX=${layerBbox} ENV_DDIR="./layers/" python3 digitransit-overpass-layers/generate-hb-layers.py`
-        const fullCommand = `docker pull ${dataToolImage}; docker run --rm -v ${dataDir}/layers:/layers ${dataToolImage} bash -c "${cmd}"`
+        const fullCommand = `docker pull ${dataToolImage}; docker run --rm -v ${dataDir}/build/hb/layers:/layers ${dataToolImage} bash -c "${cmd}"`
         const genLayers = exec(fullCommand);
         //const genLog = fs.openSync(`${dataDir}/build/${config.id}/layerGeneration.log`, 'w'); // No such file Error.
 
