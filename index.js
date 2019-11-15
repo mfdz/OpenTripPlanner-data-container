@@ -18,12 +18,13 @@ const start = promisify((task, cb) => gulp.series(task)(cb))
 const updateDEM = ['dem:update']
 const updateOSM = ['osm:update']
 const updateGTFS = ['gtfs:dl', 'gtfs:fit', 'gtfs:filter', 'gtfs:id']
+const generateLayers = ['genLayers']
 
 let routers
 if (process.env.ROUTERS) {
   routers = process.env.ROUTERS.replace(/ /g, '').split(',')
 } else {
-  routers = ['finland', 'waltti', 'hsl']
+  routers = ['finland', 'waltti', 'hsl', 'hb']
 }
 
 start('seed').then(() => {
@@ -59,6 +60,10 @@ async function update () {
   await every(updateGTFS, function (task, callback) {
     start(task).then(() => { callback(null, true) })
   })
+
+  await every(generateLayers, function (task, callback) {
+      start(task).then(() => { callback(null, true) })
+    })
 
   // postSlackMessage('GTFS data updated');
 
