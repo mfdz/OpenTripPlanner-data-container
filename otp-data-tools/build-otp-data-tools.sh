@@ -41,3 +41,4 @@ git clone https://github.com/HSLdevcom/OTPQA.git
 # Add GeoJson layers data.
 git clone https://github.com/mfdz/digitransit-overpass-layers.git
 pip3 install -r digitransit-overpass-layers/requirements.txt
+mkdir layers
