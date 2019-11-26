@@ -10,7 +10,7 @@ module.exports = function (config) {
             lastLog.splice(0, 1)
         }
     }
-    const p = new Promise((resolve) => {
+    const p = new Promise((resolve, reject) => {
         // TODO for all routers
 
         const cmd = `set +e
