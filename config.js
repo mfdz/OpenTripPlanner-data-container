@@ -11,9 +11,9 @@ const HB_CONFIG = {
   'id': 'hb',
   'src': [
     src('vvs', 'https://gtfs.mfdz.de/gtfs/VVS.with-shapes.gtfs.zip', false, ['router-hb/gtfs-rules/vvs.rule']),
-    src('naldo', 'https://www.nvbw.de/fileadmin/nvbw/open-data/Fahrplandaten_mit_Liniennetz/naldo.zip', false, []),
-    src('vgc', 'https://www.nvbw.de/fileadmin/nvbw/open-data/Fahrplandaten_mit_Liniennetz/vgc.zip', false, []),
-    src('vgf', 'https://www.nvbw.de/fileadmin/nvbw/open-data/Fahrplandaten_mit_Liniennetz/vgf.zip', false, [])
+    src('naldo', 'https://www.nvbw.de/fileadmin/nvbw/open-data/Fahrplandaten_mit_Liniennetz/naldo.zip', false, ['router-hb/gtfs-rules/naldo.rule']),
+    src('vgc', 'https://www.nvbw.de/fileadmin/nvbw/open-data/Fahrplandaten_mit_Liniennetz/vgc.zip', false, ['router-hb/gtfs-rules/vgc.rule']),
+    src('vgf', 'https://www.nvbw.de/fileadmin/nvbw/open-data/Fahrplandaten_mit_Liniennetz/vgf.zip', false, ['router-hb/gtfs-rules/vgf.rule'])
   ],
   'osm': 'hb',
   'dem': 'hb'
