@@ -19,8 +19,7 @@
 # de:08235:10451:0:3,"Nagold, Kreuzertal", Location via info@vbn-bvn.de 
 {"op":"update", "match":{"file":"stops.txt", "stop_id":"de:08235:10451:0:3"}, "update":{"stop_lat":"48.551247", "stop_lon":"8.737486"}}
 # Speßhardt location via info@vbn-bvn.de
-{"op":"update", "match":{"file":"stops.txt", "stop_id":"de:08235:5660:2:3"}, "update":{"stop_lat":"48.714458", 
-"stop_lon":"8.690857", "stop_id":"de:08235:3181:0:3"}}
+{"op":"update", "match":{"file":"stops.txt", "stop_id":"de:08235:5660:2:3"}, "update":{"stop_lat":"48.714458", "stop_lon":"8.690857"}}
 # Eyachbrücke location via info@vbn-bvn.de
 {"op":"update", "match":{"file":"stops.txt", "stop_id":"de:08235:5660:2:3"}, "update":{"stop_lat":"48.816358", "stop_lon":"8.577080", "stop_id":"de:08235:5660:2:1"}}
 {"op":"update", "match":{"file":"stops.txt", "stop_id":"de:08235:5660:2:4"}, "update":{"stop_lat":"48.816326", "stop_lon":"8.577326", "stop_id":"de:08235:5660:2:2"}}
