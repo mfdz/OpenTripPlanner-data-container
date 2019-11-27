@@ -1,28 +1,19 @@
 #!/bin/bash
 # this script is run inside the otp-data-tools container
 set +e
-apt-get update && \
-  apt-get -y install \
-    git build-essential python-dev protobuf-compiler libprotobuf-dev \
-    make swig g++ python-dev libreadosm-dev \
-    libboost-graph-dev libproj-dev libgoogle-perftools-dev \
-    osmctools unzip zip python-pyproj wget python-argh \
-    python-scipy python-sklearn python-pip python-numpy curl
 
-rm -rf /var/lib/apt/lists/*
-
-wget https://bootstrap.pypa.io/get-pip.py && \
-  python get-pip.py && \
-  pip install imposm.parser && \
-  pip install argh && \
-  pip install future && \
-  pip install grequests && \
-  pip install unicodecsv && \
-  pip install cffi && \
-  pip install utm
-
+echo https://github.com/mfdz/onebusaway-gtfs-modules.git
+git clone https://github.com/mfdz/onebusaway-gtfs-modules.git
+cd onebusaway-gtfs-modules
+# TODO OBA_BRANCH 
+mvn package -Dmaven.test.skip=true
+cd ..
+# Copy oba artifacts
+mkdir -p one-busaway-gtfs-merge && \
+  cp onebusaway-gtfs-modules/onebusaway-gtfs-merge-cli/target/onebusaway-gtfs-merge-cli*.jar one-busaway-gtfs-merge/onebusaway-gtfs-merge-cli.jar
 mkdir -p one-busaway-gtfs-transformer && \
-  wget -O one-busaway-gtfs-transformer/onebusaway-gtfs-transformer-cli.jar "http://nexus.onebusaway.org/service/local/artifact/maven/content?r=public&g=org.onebusaway&a=onebusaway-gtfs-transformer-cli&v=1.3.9"
+  cp onebusaway-gtfs-modules/onebusaway-gtfs-transformer-cli/target/onebusaway-gtfs-transformer-cli*.jar one-busaway-gtfs-transformer/onebusaway-gtfs-transformer-cli.jar
+
 
 git clone https://github.com/jswhit/pyproj.git
 cd pyproj

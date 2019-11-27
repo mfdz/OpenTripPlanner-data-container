@@ -5,6 +5,7 @@ const dl = require('./task/Download')
 const dlBlob = require('./task/DownloadDEMBlob')
 const { setFeedIdTask } = require('./task/setFeedId')
 const { OBAFilterTask } = require('./task/OBAFilter')
+const { OBAMergeTask } = require('./task/OBAMerge')
 const { fitGTFSTask } = require('./task/MapFit')
 const { testGTFSFile } = require('./task/GTFSTest')
 const Seed = require('./task/Seed')
@@ -83,11 +84,18 @@ gulp.task('gtfs:dl', gulp.series('del:id', function () {
     .pipe(gulp.dest(`${config.dataDir}/fit/gtfs`))
 }))
 
-// Add feedId to gtfs files in id dir, and moves files to directory 'ready'
+// Add feedId to gtfs files in id dir, and moves files to directory 'merge'
 gulp.task('gtfs:id', function () {
   return gulp.src([`${config.dataDir}/id/gtfs/*`])
     .pipe(setFeedIdTask())
   //    .pipe(vinylPaths(del))
+    .pipe(gulp.dest(`${config.dataDir}/merge/gtfs`))
+})
+
+// Merge gtfs files in merge dir (having merge=true in config), and generate merged.gtfs.zip to directory 'ready'
+gulp.task('gtfs:merge', function () {
+  return gulp.src([`${config.dataDir}/merge/gtfs/*`])
+    .pipe(OBAMergeTask(config.configMap))
     .pipe(gulp.dest(`${config.dataDir}/ready/gtfs`))
 })
 
@@ -110,7 +118,7 @@ gulp.task('copyRouterConfig', function () {
 })
 
 // Run one of more filter runs on gtfs files(based on config) and moves files to
-// directory 'ready'
+// directory 'id'
 gulp.task('gtfs:filter', gulp.series('copyRouterConfig', function () {
   return gulp.src([`${config.dataDir}/filter/gtfs/*`])
     .pipe(OBAFilterTask(config.configMap))

@@ -71,7 +71,13 @@ module.exports = function (configs) {
     if (config.dem) {
       stream.push(createFile(config, demFile(config), `${dataDir}/ready/dem/${demFile(config)}`))
     }
-    config.src.forEach(src => {
+    unmergedSrc = config.src.filter(src => {
+      return !src.merge
+    })
+    if (unmergedSrc.length < config.src.length) {
+      stream.push(createFile(config, 'merged.gtfs.zip', `${dataDir}/ready/gtfs/merged.gtfs.zip`))
+    } 
+    unmergedSrc.forEach(src => {
       stream.push(createFile(config, gtfsFile(src), `${dataDir}/ready/gtfs/${gtfsFile(src)}`))
     })
   })

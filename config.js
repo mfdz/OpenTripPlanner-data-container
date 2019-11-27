@@ -4,16 +4,17 @@
  * url = feed url (String)
  * fit = mapfit shapes (true/false)
  * rules = OBA Filter rules to apply (array of strings)
+ * merge = merge GTFS files (true/false)
  */
-const src = (id, url, fit, rules) => ({ id, url, fit, rules })
+const src = (id, url, fit, rules, merge) => ({ id, url, fit, rules, merge })
 
 const HB_CONFIG = {
   'id': 'hb',
   'src': [
-    src('vvs', 'https://gtfs.mfdz.de/gtfs/VVS.with-shapes.gtfs.zip', false, ['router-hb/gtfs-rules/vvs.rule']),
-    src('naldo', 'https://www.nvbw.de/fileadmin/nvbw/open-data/Fahrplandaten_mit_Liniennetz/naldo.zip', false, ['router-hb/gtfs-rules/naldo.rule']),
-    src('vgc', 'https://www.nvbw.de/fileadmin/nvbw/open-data/Fahrplandaten_mit_Liniennetz/vgc.zip', false, ['router-hb/gtfs-rules/vgc.rule']),
-    src('vgf', 'https://www.nvbw.de/fileadmin/nvbw/open-data/Fahrplandaten_mit_Liniennetz/vgf.zip', false, ['router-hb/gtfs-rules/vgf.rule'])
+    src('vvs', 'https://gtfs.mfdz.de/gtfs/VVS.with-shapes.gtfs.zip', false, ['router-hb/gtfs-rules/vvs.rule'], true),
+    src('naldo', 'https://www.nvbw.de/fileadmin/nvbw/open-data/Fahrplandaten_mit_Liniennetz/naldo.zip', false, ['router-hb/gtfs-rules/naldo.rule'], true),
+    src('vgc', 'https://www.nvbw.de/fileadmin/nvbw/open-data/Fahrplandaten_mit_Liniennetz/vgc.zip', false, ['router-hb/gtfs-rules/vgc.rule'], true),
+    src('vgf', 'https://www.nvbw.de/fileadmin/nvbw/open-data/Fahrplandaten_mit_Liniennetz/vgf.zip', false, ['router-hb/gtfs-rules/vgf.rule'], true)
   ],
   'osm': 'hb',
   'dem': 'hb'

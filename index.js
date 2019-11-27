@@ -17,7 +17,7 @@ const start = promisify((task, cb) => gulp.series(task)(cb))
 
 const updateDEM = ['dem:update']
 const updateOSM = ['osm:update']
-const updateGTFS = ['gtfs:dl', 'gtfs:fit', 'gtfs:filter', 'gtfs:id']
+const updateGTFS = ['gtfs:dl', 'gtfs:fit', 'gtfs:filter', 'gtfs:id', 'gtfs:merge']
 
 let routers
 if (process.env.ROUTERS) {
