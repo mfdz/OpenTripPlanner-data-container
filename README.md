@@ -80,11 +80,14 @@ Runs configured map fits. Copies data to directory 'data/filter/gtfs'.
 Runs configured filterings. Copies data to directory 'data/id/gtfs'.
 
 6. gtfs:id
-Sets the gtfs feed id to <id> and copies data to directory 'data/ready/gtfs'.
+Sets the gtfs feed id to <id> and copies data to directory 'data/merge/gtfs'.
+
+7. gtfs:merge
+Merges multiple gtfs feeds and copies merged.gtfs.zip and not to be merged files to directory 'data/ready/gtfs'.
 
 Building the router from available (seeded or downloaded and processed) data:
 
-7. router:buildGraph
+8. router:buildGraph
 
 Prebuilds graph with either current latest version or user defined version (with env variable OTP_TAG) of OTP and creates zip files
 ready for building the otp-data container.
@@ -92,7 +95,7 @@ ready for building the otp-data container.
 
 The final step is router deployment:
 
-8. deploy.sh
+9. deploy.sh
 
 Builds a data container, starts it, starts either latest or user defined version (with env variable OTP_TAG) of otp and runs
 routing tests (otp-data-tools latest image is used for it by default, TOOLS_TAG env variable can be used to change that)
