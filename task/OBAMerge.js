@@ -88,6 +88,8 @@ module.exports = {
           const src = Object.keys(configs)
             .map(key => configs[key])
             .filter(src => { return src.merge })
+            // reverse to prioritize merge order as sorted in config
+            .reverse()
             .map(src => {return `/data/merge/gtfs/${src.id}.zip`})
             .join(" ")
           OBAMerge([src], mergedGtfsFile).then((success) => {
