@@ -1,5 +1,5 @@
 const fs = require('fs');
-const { hostDataDir, dataDir, dataToolImage, layerBbox } = require('../config.js');
+const { hostDataDir, dataDir, dataToolImage, constants } = require('../config.js');
 const { exec } = require('child_process')
 
 module.exports = function (config) {
@@ -11,38 +11,42 @@ module.exports = function (config) {
         }
     }
     const p = new Promise((resolve, reject) => {
-        // TODO for all routers
-
-        const cmd = `set +e
-                    ENV_ICONSRC=\"digitransit-overpass-layers/layer-icons/\" ENV_BBOX=${layerBbox} ENV_DDIR="./layers/" python3 digitransit-overpass-layers/generate-hb-layers.py`
-        const fullCommand = `docker pull ${dataToolImage}; docker run --rm -v ${dataDir}/build/hb/layers:/layers ${dataToolImage} bash -c "${cmd}"`
-        const genLayers = exec(fullCommand);
-        //const genLog = fs.openSync(`${dataDir}/build/${config.id}/layerGeneration.log`, 'w'); // No such file Error.
-
-        genLayers.on('exit', function (c) {
-            if (c === 0) {
-                process.stdout.write('GeoJson layer generation SUCCESS\n')
-                resolve()
-            } else {
-                const e = lastLog.join('')
-                reject(e)
-                process.stdout.write(`GeoJson layer generation FAILED (${c})\n${e}\n`)
+        for (let i = 0; i < config.length; i++){
+            console.log(config[i].id); // display current config
+            if (config[i].layerBbox == undefined){
+                continue;
             }
-        })
+            const cmd = `set +e
+                        ENV_ICONSRC=\"digitransit-overpass-layers/layer-icons/\" ENV_BBOX=${config[i].layerBbox} ENV_DDIR="./layers/" python3 digitransit-overpass-layers/generate-hb-layers.py`
+            const fullCommand = `docker pull ${dataToolImage}; docker run --rm -v ${dataDir}/build/${config[i].id}/layers:/layers ${dataToolImage} bash -c "${cmd}"`
+            const genLayers = exec(fullCommand);
+            //const genLog = fs.openSync(`${dataDir}/build/${config[i].id}/layerGeneration.log`, 'w'); // permission denied
 
-        genLayers.stdout.on('data', function (data) {
-            collectLog(data)
-            process.stdout.write(data.toString())
-            //fs.writeSync(genLog, data)
-        })
+            genLayers.on('exit', function (c) {
+                if (c === 0) {
+                    process.stdout.write('GeoJson layer generation SUCCESS\n')
+                    resolve()
+                } else {
+                    const e = lastLog.join('')
+                    reject(e)
+                    process.stdout.write(`GeoJson layer generation FAILED (${c})\n${e}\n`)
+                }
+            })
 
-        genLayers.stderr.on('data', function (data) {
-            collectLog(data)
-            process.stdout.write(data.toString())
-            //fs.writeSync(genLog, data)
-        })
+            genLayers.stdout.on('data', function (data) {
+                collectLog(data)
+                process.stdout.write(data.toString())
+                //fs.writeSync(genLog, data)
+            })
 
-        //fs.closeSync(genLog)
+            genLayers.stderr.on('data', function (data) {
+                collectLog(data)
+                process.stdout.write(data.toString())
+                //fs.writeSync(genLog, data)
+            })
+
+            //fs.closeSync(genLog)
+        }
     })
     return p
 }

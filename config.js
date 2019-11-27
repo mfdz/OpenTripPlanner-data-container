@@ -16,7 +16,8 @@ const HB_CONFIG = {
     src('vgf', 'https://www.nvbw.de/fileadmin/nvbw/open-data/Fahrplandaten_mit_Liniennetz/vgf.zip', false, [])
   ],
   'osm': 'hb',
-  'dem': 'hb'
+  'dem': 'hb',
+  'layerBbox': '48.51592209023528,8.533287048339844,48.72607645125842,9.036598205566406'
 }
 
 const HSL_CONFIG = {
@@ -74,8 +75,7 @@ let ALL_CONFIGS
 
 const setCurrentConfig = (name) => {
   ALL_CONFIGS = [WALTTI_CONFIG, HSL_CONFIG, FINLAND_CONFIG, HB_CONFIG].reduce((acc, nxt) => {
-    if ((name && name.split(',').indexOf(nxt.id) !== -1) ||
-      name === undefined) {
+    if ((name && name.split(',').indexOf(nxt.id) !== -1) || name === undefined) {
       acc.push(nxt)
     }
     return acc
@@ -157,7 +157,6 @@ const constants = {
 
 module.exports = {
   ALL_CONFIGS: () => ALL_CONFIGS,
-  layerBbox: process.env.BBOX,
   configMap,
   osm,
   osmMap: osm.reduce((acc, val) => { acc[val.id] = val; return acc }, {}),
