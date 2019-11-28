@@ -17,7 +17,7 @@ module.exports = function (config) {
                 continue;
             }
             const cmd = `set +e
-                        ENV_ICONSRC=\"digitransit-overpass-layers/layer-icons/\" ENV_BBOX=${config[i].layerBbox} ENV_DDIR="./layers/" python3 digitransit-overpass-layers/generate-hb-layers.py`
+                        ENV_ICONSRC=\"digitransit-overpass-layers/layer-icons/\" ENV_BBOX=${config[i].layerBbox} ENV_DDIR="./layers/" python3 digitransit-overpass-layers/generate-layers.py`
             const fullCommand = `docker pull ${dataToolImage}; docker run --rm -v ${dataDir}/build/${config[i].id}/layers:/layers ${dataToolImage} bash -c "${cmd}"`
             const genLayers = exec(fullCommand);
             //const genLog = fs.openSync(`${dataDir}/build/${config[i].id}/layerGeneration.log`, 'w'); // permission denied
