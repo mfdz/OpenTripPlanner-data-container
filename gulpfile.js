@@ -94,8 +94,13 @@ gulp.task('gtfs:id', function () {
 
 // Merge gtfs files in merge dir (having merge=true in config), and generate merged.gtfs.zip to directory 'ready'
 gulp.task('gtfs:merge', function () {
+  console.log(config.configMap.config)
+
+  console.log("^configMao----vALL_CONFIGS()")
+  console.log(config.ALL_CONFIGS())
+  exit()
   return gulp.src([`${config.dataDir}/merge/gtfs/*`])
-    .pipe(OBAMergeTask(config.configMap))
+    .pipe(OBAMergeTask(config.configMap, "--file=stops.txt --duplicateDetection=identity"))
     .pipe(gulp.dest(`${config.dataDir}/ready/gtfs`))
 })
 

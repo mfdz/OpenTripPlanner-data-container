@@ -19,12 +19,12 @@ const { postSlackMessage } = require('../util')
 /**
  * returns promise that resolves to true (success) or false (failure)
  */
-function OBAMerge (src, dst) {
+function OBAMerge (src, dst, mergeOptions) {
   process.stdout.write(`Merging ${src} ...\n`)
   const p = new Promise((resolve) => {
     let success = true
     let lastLog = []
-    const cmd = `docker pull ${dataToolImage}; docker run -v ${hostDataDir}:/data --rm ${dataToolImage} java -Xmx6g -jar one-busaway-gtfs-merge/onebusaway-gtfs-merge-cli.jar ${src} /data/${dst}`
+    const cmd = `docker pull ${dataToolImage}; docker run -v ${hostDataDir}:/data --rm ${dataToolImage} java -Xmx6g -jar one-busaway-gtfs-merge/onebusaway-gtfs-merge-cli.jar ${mergeOptions} ${src} /data/${dst}`
     const mergeProcess = exec(cmd)
 
     const checkError = (data) => {
@@ -58,7 +58,7 @@ function OBAMerge (src, dst) {
 }
 
 module.exports = {
-  OBAMergeTask: (configs) => {
+  OBAMergeTask: (configs, mergeOptions) => {
     const filesToMerge = []
     merged = false
       
@@ -92,7 +92,7 @@ module.exports = {
             .reverse()
             .map(src => {return `/data/merge/gtfs/${src.id}.zip`})
             .join(" ")
-          OBAMerge([src], mergedGtfsFile).then((success) => {
+          OBAMerge([src], mergedGtfsFile, mergeOptions).then((success) => {
             if (success) {
               file.path = `${dataDir}${mergedGtfsFile}`
               file.contents = cloneable(fs.createReadStream(file.path))
