@@ -13,7 +13,7 @@ module.exports = function (configs, regexp) {
 
   let toProcess = configs.length
   configs.forEach(c => {
-    const org = process.env.ORG || 'hsldevcom'
+    const org = process.env.ORG || 'hsldevcom'
     const container = `${org}/opentripplanner-data-container-${c.id}:${seedTag}`
     process.stdout.write(`extracting data from ${container}...\n`)
     try {
@@ -27,7 +27,7 @@ module.exports = function (configs, regexp) {
     const script =
   `docker rmi --force ${container} || true;
   docker rm data-extract-${c.id} || true;
-  docker rename data-extract-${c.id} $(date +%s) || true; 
+  docker rename data-extract-${c.id} $(date +%s) || true;
   docker create --name data-extract-${c.id} ${container};
   docker cp data-extract-${c.id}:var/www/localhost/htdocs/router-${c.id}.zip .;
   docker rm data-extract-${c.id}`
