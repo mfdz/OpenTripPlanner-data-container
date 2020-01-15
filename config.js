@@ -150,7 +150,6 @@ const dem = [
   { id: 'hb', url: 'https://leonard.io/herrenberg/srtm_38_03.tif' },
 ]
 
-
 const constants = {
   BUFFER_SIZE: 1024 * 1024 * 32
 }
