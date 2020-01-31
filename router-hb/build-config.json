@@ -1,5 +1,6 @@
 {
   "areaVisibility": true,
   "parentStopLinking": true,
-  "osmWayPropertySet": "default"
+  "osmWayPropertySet": "default",
+  "islandWithoutStopsMaxSize": 1000
 }
