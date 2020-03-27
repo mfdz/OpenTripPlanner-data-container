@@ -156,7 +156,7 @@ const dem = [
 
 const constants = {
   BUFFER_SIZE: 1024 * 1024 * 32,
-  OTP_MEMORY: '8G'
+  OTP_MEMORY: '12G'
 }
 
 module.exports = {
