@@ -1,5 +1,20 @@
 {
   "areaVisibility": true,
   "parentStopLinking": true,
-  "osmWayPropertySet": "germany"
+  "osmWayPropertySet": "germany",
+  "updaters": [
+    {
+      "type": "stop-time-updater",
+      "frequencySec": 60,
+      "sourceType": "gtfs-http",
+      "url": "http://gtfsr.vvs.de:7788",
+      "feedId": "1"
+    },
+    {
+      "type": "real-time-alerts",
+      "frequencySec": 60,
+      "url": "http://gtfsr.vvs.de:7788",
+      "feedId": "1"
+    }
+  ]
 }
