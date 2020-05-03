@@ -13,5 +13,19 @@
       "carParkCarLegWeight": 2,
       "itineraryFiltering": 1.0
   },
-  "updaters": []
+  "updaters": [
+    {
+      "type": "stop-time-updater",
+      "frequencySec": 60,
+      "sourceType": "gtfs-http",
+      "url": "http://gtfsr.vvs.de:7788",
+      "feedId": "1"
+    },
+    {
+      "type": "real-time-alerts",
+      "frequencySec": 60,
+      "url": "http://gtfsr.vvs.de:7788",
+      "feedId": "1"
+    }
+  ]
 }
