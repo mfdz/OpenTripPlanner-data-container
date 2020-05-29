@@ -42,7 +42,7 @@ module.exports = function (entries) {
         }
       })
       r.on('error', err => {
-        process.stdout.write(err)
+        console.log(err)
         process.stdout.write(`Failed to load new DEM data for ${entry.id}\n`)
         reject('fail') // eslint-disable-line
       })
