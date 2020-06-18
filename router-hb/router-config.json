@@ -28,10 +28,12 @@
       "feedId": "hbg"
     },
     {
+      "id": "regiorad-bike-rental",
       "type": "bike-rental",
       "frequencySec": 60,
       "sourceType": "gbfs",
-      "url": "https://gtfs.mfdz.de/gbfs/regiorad_stuttgart/"
+      "url": "https://gtfs.mfdz.de/gbfs/regiorad_stuttgart/",
+      "network": "regiorad"
     }
   ]
 }
