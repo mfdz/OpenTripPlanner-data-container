@@ -22,7 +22,9 @@ wget https://bootstrap.pypa.io/get-pip.py && \
   pip install utm
 
 mkdir -p one-busaway-gtfs-transformer && \
-  wget -O one-busaway-gtfs-transformer/onebusaway-gtfs-transformer-cli.jar "http://nexus.onebusaway.org/service/local/artifact/maven/content?r=public&g=org.onebusaway&a=onebusaway-gtfs-transformer-cli&v=1.3.9"
+  wget -O one-busaway-gtfs-transformer/onebusaway-gtfs-transformer-cli.jar "http://nexus.onebusaway.org/service/local/artifact/maven/content?r=public&g=org.onebusaway&a=onebusaway-gtfs-transformer-cli&v=1.3.88"
+mkdir -p one-busaway-gtfs-merge && \
+  wget -O one-busaway-gtfs-merge/onebusaway-gtfs-merge-cli.jar "http://nexus.onebusaway.org/service/local/artifact/maven/content?r=public&g=org.onebusaway&a=onebusaway-gtfs-merge-cli&v=1.3.88"
 
 git clone https://github.com/jswhit/pyproj.git
 cd pyproj
