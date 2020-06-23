@@ -42,6 +42,15 @@
       "sourceType": "gbfs",
       "url": "https://raw.githubusercontent.com/stadtnavi/static-gbfs-feeds/master/taxi/",
       "network": "taxi"
+    },
+    {
+      "id": "car-sharing",
+      "type": "bike-rental",
+      "frequencySec": 600,
+      "sourceType": "gbfs",
+      "url": "https://raw.githubusercontent.com/stadtnavi/static-gbfs-feeds/master/car-sharing/",
+      "network": "car-sharing"
     }
+
   ]
 }
