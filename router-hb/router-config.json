@@ -34,6 +34,14 @@
       "sourceType": "gbfs",
       "url": "https://gtfs.mfdz.de/gbfs/regiorad_stuttgart/",
       "network": "regiorad"
+    },
+    {
+      "id": "taxi-ranks",
+      "type": "bike-rental",
+      "frequencySec": 600,
+      "sourceType": "gbfs",
+      "url": "https://raw.githubusercontent.com/stadtnavi/static-gbfs-feeds/master/taxi/",
+      "network": "taxi"
     }
   ]
 }
