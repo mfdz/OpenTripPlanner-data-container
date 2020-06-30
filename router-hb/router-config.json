@@ -41,7 +41,8 @@
       "frequencySec": 600,
       "sourceType": "gbfs",
       "url": "https://raw.githubusercontent.com/stadtnavi/static-gbfs-feeds/master/taxi/",
-      "network": "taxi"
+      "network": "taxi",
+      "routeAsCar": true
     },
     {
       "id": "car-sharing",
@@ -49,7 +50,8 @@
       "frequencySec": 600,
       "sourceType": "gbfs",
       "url": "https://raw.githubusercontent.com/stadtnavi/static-gbfs-feeds/master/car-sharing/",
-      "network": "car-sharing"
+      "network": "car-sharing",
+      "routeAsCar": true
     }
 
   ]
