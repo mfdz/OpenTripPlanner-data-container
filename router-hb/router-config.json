@@ -33,7 +33,8 @@
       "frequencySec": 60,
       "sourceType": "gbfs",
       "url": "https://gtfs.mfdz.de/gbfs/regiorad_stuttgart/",
-      "network": "regiorad"
+      "network": "regiorad",
+      "rentalType": "station-based-with-temporary-drop-off"
     },
     {
       "id": "taxi-stands",
