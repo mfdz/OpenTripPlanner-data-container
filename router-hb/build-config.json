@@ -1,5 +1,6 @@
 {
   "areaVisibility": true,
   "parentStopLinking": true,
-  "osmWayPropertySet": "germany"
+  "osmWayPropertySet": "germany",
+  "subwayAccessTime": 0
 }
