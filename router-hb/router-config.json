@@ -53,6 +53,13 @@
       "url": "https://raw.githubusercontent.com/stadtnavi/static-gbfs-feeds/master/car-sharing/",
       "network": "car-sharing",
       "routeAsCar": true
+    },
+    {
+      "id": "park-api",
+      "type": "car-park",
+      "frequencySec": 120,
+      "sourceType": "park-api",
+      "url": "https://api.stadtnavi.de/parkapi.json"
     }
   ]
 }
