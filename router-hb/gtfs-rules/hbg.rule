@@ -1,3 +1,6 @@
 ## Routes with white as line colour are changed to grey as text colour is harded as white in dt-ui
 
 {"op":"update", "match":{"file":"routes.txt", "route_color":"ffffff"}, "update":{"route_color":"8F908F"}}
+{"op":"remove", "match":{"file":"routes.txt", "route_short_name":"T14-A"}}
+{"op":"remove", "match":{"file":"routes.txt", "route_short_name":"T14-B"}}
+
