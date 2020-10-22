@@ -2,5 +2,6 @@
   "areaVisibility": true,
   "parentStopLinking": true,
   "osmWayPropertySet": "germany",
-  "subwayAccessTime": 0
+  "subwayAccessTime": 0,
+  "staticBikeParkAndRide": true
 }
