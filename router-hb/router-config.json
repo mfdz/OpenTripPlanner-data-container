@@ -32,7 +32,7 @@
       "type": "bike-rental",
       "frequencySec": 60,
       "sourceType": "gbfs",
-      "url": "https://ip-api.mobidata-bw.de/v1/NVBW/gbfs/v1/",
+      "url": "https://gtfs.mfdz.de/gbfs/regiorad_stuttgart/",
       "network": "regiorad",
       "rentalType": "station-based-with-temporary-drop-off"
     },
