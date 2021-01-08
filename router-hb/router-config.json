@@ -41,7 +41,7 @@
       "type": "bike-rental",
       "frequencySec": 600,
       "sourceType": "gbfs",
-      "url": "https://raw.githubusercontent.com/stadtnavi/static-gbfs-feeds/master/taxi/",
+      "url": "https://gtfs.mfdz.de/gbfs/taxi_hbg/",
       "network": "taxi",
       "routeAsCar": true
     },
